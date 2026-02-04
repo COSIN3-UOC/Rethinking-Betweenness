@@ -349,7 +349,7 @@ if __name__ == "__main__":
     parser.add_argument("graph_type", type=str, help="ring, lattice or star)")
     parser.add_argument("speed_ratio", type=str, help="the speed ratio between fast and slow roads (1, 2, 3)")
     parser.add_argument("max_k", type=int, default=10, help="maximum number of paths to compute (default: 10)")
-    parser.add_argument("p", type=float, default=10, help="penalization ([0,1] will be times 1+p)")
+    parser.add_argument("p", type=float, default=0.1, help="penalization ([0,1] will be times 1+p)")
     parser.add_argument("eps", type=float, default=0.3, help="tolerance for path length increase (default: 0.3)")
     args = parser.parse_args()
 
