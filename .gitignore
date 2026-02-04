@@ -1,0 +1,13 @@
+#ignore apple file
+.DS_Store
+cache/
+.vscode/
+rondes_poly.geojson
+rondes_poly.gpkg
+rondes_poly.qmd
+
+#ignore folders
+license.txt
+figs_posters_present/
+files_for_linux/
+DivisioLH_BAR/
