@@ -1,0 +1,49 @@
+# ---- Compiler ----
+CXX ?= g++
+
+# ---- MATLAB root on Linux ----
+
+MATLABROOT ?= /usr/local/R2021a
+MATLAB_INCLUDE := $(MATLABROOT)/extern/include
+MATLAB_BIN     := $(MATLABROOT)/bin/glnxa64
+MATLAB_EXTBIN  := $(MATLABROOT)/extern/bin/glnxa64
+
+# ---- Extra include/lib dirs if you have custom Boost, etc. ----
+EXTRA_INC ?= /usr/include
+EXTRA_LIB ?= /usr/lib
+
+INC_DIRS := $(addprefix -I, $(MATLAB_INCLUDE) $(EXTRA_INC))
+LIB_DIRS := $(addprefix -L, $(MATLAB_BIN) $(MATLAB_EXTBIN) $(EXTRA_LIB))
+
+# ---- Common flags ----
+CPPFLAGS += -std=c++2a $(INC_DIRS)
+CXXFLAGS += -O3 -ffast-math -Wall -Wextra -pedantic -w
+LDFLAGS  += $(LIB_DIRS) \
+            -Wl,-rpath,$(MATLAB_BIN) -Wl,-rpath,$(MATLAB_EXTBIN)
+
+# ---- OpenMP (GCC vs Clang on Linux) ----
+ifneq (,$(findstring clang,$(shell $(CXX) --version 2>/dev/null)))
+  OMPFLAGS := -fopenmp
+  OMPLIBS  := -lomp        # Clang needs libomp
+else
+  OMPFLAGS := -fopenmp     # GCC auto-links libgomp
+  OMPLIBS  :=
+endif
+
+# ---- ThreadSanitizer (optional) ----
+# Enable with: make TSAN_FLAGS="-fsanitize=thread -g"
+TSAN_FLAGS ?=
+
+# ---- Libraries ----
+# Note: many Linux distros still require -lboost_system with filesystem.
+LDLIBS := -lboost_filesystem -lboost_graph -lboost_system -pthread \
+          -lmat -lmx -leng -lmex \
+          $(OMPLIBS)
+
+# ---- Target ----
+Yen_tolSPR: generate_p_list.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(TSAN_FLAGS) $(OMPFLAGS) $< -o $@ $(LDFLAGS) $(LDLIBS)
+
+.PHONY: clean
+clean:
+	$(RM) Yen_tolSPR

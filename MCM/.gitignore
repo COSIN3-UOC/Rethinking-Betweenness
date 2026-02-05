@@ -1,0 +1,8 @@
+fig/
+.vscode/
+old_scripts/
+mcm/ring_road_p_structure_vx1/
+mcm/ring_road_p_structure_vx2/
+mcm/lattice_road_p_structure_vx2/
+mcm/star_road_p_structure_vx2/
+mcm/other_graphs/
