@@ -1,4 +1,4 @@
-# Relaxing Shortest Paths: Betweenness under Near-Optimal Path Choice
+# Rethinking Betweenness Centrality Beyond Shortest Paths
 
 ## Table of Contents
 1. [Citing](#citing)
