@@ -11,3 +11,6 @@ license.txt
 figs_posters_present/
 files_for_linux/
 DivisioLH_BAR/
+
+MCM/sim_results/
+*.mat
