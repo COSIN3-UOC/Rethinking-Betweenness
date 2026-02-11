@@ -5,10 +5,11 @@ cache/
 rondes_poly.geojson
 rondes_poly.gpkg
 rondes_poly.qmd
+*.h5
 
 #ignore folders
 license.txt
 figs_posters_present/
 files_for_linux/
 DivisioLH_BAR/
-
+MCM/mcm/other_graphs/
