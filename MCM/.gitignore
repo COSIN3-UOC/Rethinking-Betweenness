@@ -1,9 +1,9 @@
 fig/
 .vscode/
 old_scripts/
-MCM/mcm/ring_road_p_structure_vx1/
-MCM/mcm/ring_road_p_structure_vx2/
-MCM/mcm/lattice_road_p_structure_vx2/
-MCM/mcm/star_road_p_structure_vx2/
+mcm/ring_road_p_structure_vx1/
+mcm/ring_road_p_structure_vx2/
+mcm/lattice_road_p_structure_vx2/
+mcm/star_road_p_structure_vx2/
 mcm/other_graphs/
 *.mexmaca64
