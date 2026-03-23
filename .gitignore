@@ -6,6 +6,7 @@ rondes_poly.geojson
 rondes_poly.gpkg
 rondes_poly.qmd
 *.h5
+*.mat
 
 #ignore folders
 license.txt
